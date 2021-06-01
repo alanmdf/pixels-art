@@ -148,33 +148,33 @@ describe('3 - Adicione a cor **preta** como a primeira cor da paleta de cores.',
   });
 });
 
-// describe('4 - Adicione à página um quadro de pixels, com 25 pixels.', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('4 - Adicione à página um quadro de pixels, com 25 pixels.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se o quadro de pixels possui o `id` denominado `pixel-board`', () => {
-//     cy.get('#pixel-board').should('be.visible');
-//   });
+  it('Verifica se o quadro de pixels possui o `id` denominado `pixel-board`', () => {
+    cy.get('#pixel-board').should('be.visible');
+  });
 
-//   it('Verifica se cada pixel individual dentro do quadro possui a `classe` denominada `pixel`.', () => {
-//     cy.get('.pixel').should('have.length', 25);
-//   });
+  it('Verifica se cada pixel individual dentro do quadro possui a `classe` denominada `pixel`.', () => {
+    cy.get('.pixel').should('have.length', 25);
+  });
 
-//   it('Verifica se a cor inicial dos pixels dentro do quadro, ao abrir a página, é branca.', () => {
-//     cy.get('.pixel')
-//       .should('have.length', 25)
-//       .each((pixel) => {
-//         expect(pixel).to.have.css('background-color', WHITE);
-//       });
-//   });
+  it('Verifica se a cor inicial dos pixels dentro do quadro, ao abrir a página, é branca.', () => {
+    cy.get('.pixel')
+      .should('have.length', 25)
+      .each((pixel) => {
+        expect(pixel).to.have.css('background-color', WHITE);
+      });
+  });
 
-//   it('Verifica se o quadro de pixels aparece abaixo da paleta de cores', () => {
-//     cy.get('#color-palette').then((palette) => {
-//       cy.get('#pixel-board').should('be.belowOf', palette);
-//     });
-//   });
-// });
+  it('Verifica se o quadro de pixels aparece abaixo da paleta de cores', () => {
+    cy.get('#color-palette').then((palette) => {
+      cy.get('#pixel-board').should('be.belowOf', palette);
+    });
+  });
+});
 
 // describe('5 - Faça com que cada elemento do quadro de pixels possua 40 pixels de largura, 40 pixels de altura e seja delimitado por uma borda preta de 1 pixel.', () => {
 //   beforeEach(() => {
