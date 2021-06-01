@@ -13,15 +13,15 @@ function chunk(arr, len) {
   return chunks;
 }
 
-// describe('1 - Adicione à página o título "Paleta de Cores".', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('1 - Adicione à página o título "Paleta de Cores".', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se contém um elemento `h1` com o id `title` com o título correto', () => {
-//     cy.get('h1#title').should('contain.text', 'Paleta de Cores');
-//   });
-// });
+  it('Verifica se contém um elemento `h1` com o id `title` com o título correto', () => {
+    cy.get('h1#title').should('contain.text', 'Paleta de Cores');
+  });
+});
 
 describe('2 - Adicione à página uma paleta de quatro cores distintas.', () => {
   beforeEach(() => {
@@ -95,58 +95,58 @@ describe('2 - Adicione à página uma paleta de quatro cores distintas.', () => 
   });
 });
 
-// describe('3 - Adicione a cor **preta** como a primeira cor da paleta de cores.', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('3 - Adicione a cor **preta** como a primeira cor da paleta de cores.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se a primeira cor da paleta é preta', () => {
-//     cy.get('.color')
-//       .first()
-//       .should('have.css', 'background-color', BLACK);
-//   });
+  it('Verifica se a primeira cor da paleta é preta', () => {
+    cy.get('.color')
+      .first()
+      .should('have.css', 'background-color', BLACK);
+  });
 
-//   it('Verifica se as demais cores podem ser escolhidas livremente.', () => {
-//     cy.get('.color')
-//       .eq(1)
-//       .should('not.have.css', 'background-color', BLACK);
-//     cy.get('.color')
-//       .eq(1)
-//       .should('not.have.css', 'background-color', WHITE);
-//     cy.get('.color')
-//       .eq(1)
-//       .should('not.have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-//     cy.get('.color')
-//       .eq(1)
-//       .should('have.css', 'background-color');
+  it('Verifica se as demais cores podem ser escolhidas livremente.', () => {
+    cy.get('.color')
+      .eq(1)
+      .should('not.have.css', 'background-color', BLACK);
+    cy.get('.color')
+      .eq(1)
+      .should('not.have.css', 'background-color', WHITE);
+    cy.get('.color')
+      .eq(1)
+      .should('not.have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('.color')
+      .eq(1)
+      .should('have.css', 'background-color');
 
-//     cy.get('.color')
-//       .eq(2)
-//       .should('not.have.css', 'background-color', BLACK);
-//     cy.get('.color')
-//       .eq(2)
-//       .should('not.have.css', 'background-color', WHITE);
-//     cy.get('.color')
-//       .eq(2)
-//       .should('not.have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-//     cy.get('.color')
-//       .eq(2)
-//       .should('have.css', 'background-color');
+    cy.get('.color')
+      .eq(2)
+      .should('not.have.css', 'background-color', BLACK);
+    cy.get('.color')
+      .eq(2)
+      .should('not.have.css', 'background-color', WHITE);
+    cy.get('.color')
+      .eq(2)
+      .should('not.have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('.color')
+      .eq(2)
+      .should('have.css', 'background-color');
 
-//     cy.get('.color')
-//       .eq(3)
-//       .should('not.have.css', 'background-color', BLACK);
-//     cy.get('.color')
-//       .eq(3)
-//       .should('not.have.css', 'background-color', WHITE);
-//     cy.get('.color')
-//       .eq(3)
-//       .should('not.have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-//     cy.get('.color')
-//       .eq(3)
-//       .should('have.css', 'background-color');
-//   });
-// });
+    cy.get('.color')
+      .eq(3)
+      .should('not.have.css', 'background-color', BLACK);
+    cy.get('.color')
+      .eq(3)
+      .should('not.have.css', 'background-color', WHITE);
+    cy.get('.color')
+      .eq(3)
+      .should('not.have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('.color')
+      .eq(3)
+      .should('have.css', 'background-color');
+  });
+});
 
 // describe('4 - Adicione à página um quadro de pixels, com 25 pixels.', () => {
 //   beforeEach(() => {
