@@ -13,87 +13,87 @@ function chunk(arr, len) {
   return chunks;
 }
 
-describe('1 - Adicione à página o título "Paleta de Cores".', () => {
-  beforeEach(() => {
-    cy.visit('./index.html');
-  });
-
-  it('Verifica se contém um elemento `h1` com o id `title` com o título correto', () => {
-    cy.get('h1#title').should('contain.text', 'Paleta de Cores');
-  });
-});
-
-// describe('2 - Adicione à página uma paleta de quatro cores distintas.', () => {
+// describe('1 - Adicione à página o título "Paleta de Cores".', () => {
 //   beforeEach(() => {
 //     cy.visit('./index.html');
 //   });
 
-//   it('A paleta de cores deve ser um elemento com `id` denominado `color-palette`', () => {
-//     cy.get('#color-palette').should('be.visible');
-//   });
-
-//   it('Verifica se cada cor individual da paleta de cores possui a `classe` chamada `color`.', () => {
-//     cy.get('.color')
-//       .should('have.length', 4)
-//       .then((colors) => {
-//         for (let i = 0; i < colors.length; i++) {
-//           cy.wrap(colors[i])
-//             .should('be.visible');
-//         }
-//       });
-//   });
-
-//   it('Verifica se a cor de fundo de cada elemento da paleta é a cor que o elemento representa. **A única cor não permitida na paleta é a cor branca.**', () => {
-//     cy.get('.color')
-//       .each((color) => {
-//         cy.wrap(color)
-//           .should('have.class', 'color')
-//           .and('not.have.css', 'background-color', WHITE);
-//         cy.wrap(color)
-//           .should('have.css', 'background-color');
-//       });
-//   });
-
-//   it('Verifica se cada elemento da paleta de cores tem uma borda preta, sólida e com 1 pixel de largura;', () => {
-//     cy.get('.color')
-//       .each((color) => {
-//         cy.wrap(color)
-//           .and('have.css', 'border', `1px solid ${BLACK}`)
-//           .and('have.class', 'color');
-//       });
-//   });
-
-//   it('Verifica se a paleta lista todas as cores disponíveis para utilização, lado a lado.', () => {
-//     cy.get('.color')
-//       .then((colors) => {
-//         for (let index = 1; index < colors.length; index += 1) {
-//           const currentColor = colors[index];
-//           const previousColor = colors[index - 1];
-//           cy.wrap(currentColor)
-//             .should('be.onTheRightOf', previousColor)
-//             .and('be.horizontallyAlignedWith', previousColor);
-//         }
-//       });
-//   });
-
-//   it('Verifica se a paleta de cores está posicionada abaixo do título \'Paleta de Cores\'', () => {
-//     cy.get('h1#title').then((title) => {
-//       cy.get('#color-palette').should('be.belowOf', title);
-//     });
-//   });
-
-//   it('Verifica se a paleta de cores não contém cores repetidas.', () => {
-//     cy.get('.color').then((colors) => {
-//       const allColors = Array.from(colors).map((color) => (
-//         Cypress.$(color).css('background-color')
-//       ));
-//       cy.log(allColors);
-//       const uniqColors = [...new Set(allColors)];
-//       cy.log(uniqColors);
-//       expect(allColors.length).to.eq(uniqColors.length);
-//     });
+//   it('Verifica se contém um elemento `h1` com o id `title` com o título correto', () => {
+//     cy.get('h1#title').should('contain.text', 'Paleta de Cores');
 //   });
 // });
+
+describe('2 - Adicione à página uma paleta de quatro cores distintas.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
+
+  it('A paleta de cores deve ser um elemento com `id` denominado `color-palette`', () => {
+    cy.get('#color-palette').should('be.visible');
+  });
+
+  it('Verifica se cada cor individual da paleta de cores possui a `classe` chamada `color`.', () => {
+    cy.get('.color')
+      .should('have.length', 4)
+      .then((colors) => {
+        for (let i = 0; i < colors.length; i++) {
+          cy.wrap(colors[i])
+            .should('be.visible');
+        }
+      });
+  });
+
+  it('Verifica se a cor de fundo de cada elemento da paleta é a cor que o elemento representa. **A única cor não permitida na paleta é a cor branca.**', () => {
+    cy.get('.color')
+      .each((color) => {
+        cy.wrap(color)
+          .should('have.class', 'color')
+          .and('not.have.css', 'background-color', WHITE);
+        cy.wrap(color)
+          .should('have.css', 'background-color');
+      });
+  });
+
+  it('Verifica se cada elemento da paleta de cores tem uma borda preta, sólida e com 1 pixel de largura;', () => {
+    cy.get('.color')
+      .each((color) => {
+        cy.wrap(color)
+          .and('have.css', 'border', `1px solid ${BLACK}`)
+          .and('have.class', 'color');
+      });
+  });
+
+  it('Verifica se a paleta lista todas as cores disponíveis para utilização, lado a lado.', () => {
+    cy.get('.color')
+      .then((colors) => {
+        for (let index = 1; index < colors.length; index += 1) {
+          const currentColor = colors[index];
+          const previousColor = colors[index - 1];
+          cy.wrap(currentColor)
+            .should('be.onTheRightOf', previousColor)
+            .and('be.horizontallyAlignedWith', previousColor);
+        }
+      });
+  });
+
+  it('Verifica se a paleta de cores está posicionada abaixo do título \'Paleta de Cores\'', () => {
+    cy.get('h1#title').then((title) => {
+      cy.get('#color-palette').should('be.belowOf', title);
+    });
+  });
+
+  it('Verifica se a paleta de cores não contém cores repetidas.', () => {
+    cy.get('.color').then((colors) => {
+      const allColors = Array.from(colors).map((color) => (
+        Cypress.$(color).css('background-color')
+      ));
+      cy.log(allColors);
+      const uniqColors = [...new Set(allColors)];
+      cy.log(uniqColors);
+      expect(allColors.length).to.eq(uniqColors.length);
+    });
+  });
+});
 
 // describe('3 - Adicione a cor **preta** como a primeira cor da paleta de cores.', () => {
 //   beforeEach(() => {
