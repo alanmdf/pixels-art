@@ -327,46 +327,46 @@ describe('8 - Clicar em um pixel dentro do quadro após selecionar uma cor na pa
   });
 });
 
-// describe('9 - Crie um botão que, ao ser clicado, limpa o quadro preenchendo a cor de todos seus pixels com branco.', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('9 - Crie um botão que, ao ser clicado, limpa o quadro preenchendo a cor de todos seus pixels com branco.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se o botão tem o `id` denominado `clear-board`', () => {
-//     cy.get('#clear-board').should('be.visible');
-//   });
+  it('Verifica se o botão tem o `id` denominado `clear-board`', () => {
+    cy.get('#clear-board').should('be.visible');
+  });
 
-//   it('Verifica se o botão está posicionado entre a paleta de cores e o quadro de pixels', () => {
-//     cy.get('#color-palette').then((palette) => {
-//       cy.get('#clear-board').should('be.belowOf', palette);
-//     });
+  it('Verifica se o botão está posicionado entre a paleta de cores e o quadro de pixels', () => {
+    cy.get('#color-palette').then((palette) => {
+      cy.get('#clear-board').should('be.belowOf', palette);
+    });
 
-//     cy.get('#clear-board').then((clearBtn) => {
-//       cy.get('#pixel-board').should('be.belowOf', clearBtn);
-//     });
-//   });
+    cy.get('#clear-board').then((clearBtn) => {
+      cy.get('#pixel-board').should('be.belowOf', clearBtn);
+    });
+  });
 
-//   it('Verifica se o texto do botão é \'Limpar\'', () => {
-//     cy.get('#clear-board').should('contain.text', 'Limpar');
-//   });
+  it('Verifica se o texto do botão é \'Limpar\'', () => {
+    cy.get('#clear-board').should('contain.text', 'Limpar');
+  });
 
-//   it('Verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco', () => {
-//     cy.get('.color').eq(1).then((color) => {
-//       const backgroundColor = color.css('background-color');
-//       cy.wrap(color).click();
-//       cy.get('.pixel').each((pixel) => {
-//         cy.wrap(pixel)
-//           .click()
-//           .should('have.css', 'background-color', backgroundColor);
-//       });
-//     });
+  it('Verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco', () => {
+    cy.get('.color').eq(1).then((color) => {
+      const backgroundColor = color.css('background-color');
+      cy.wrap(color).click();
+      cy.get('.pixel').each((pixel) => {
+        cy.wrap(pixel)
+          .click()
+          .should('have.css', 'background-color', backgroundColor);
+      });
+    });
 
-//     cy.get('#clear-board').click();
-//     cy.get('.pixel').each((pixel) => {
-//       cy.wrap(pixel).should('have.css', 'background-color', WHITE);
-//     });
-//   });
-// });
+    cy.get('#clear-board').click();
+    cy.get('.pixel').each((pixel) => {
+      cy.wrap(pixel).should('have.css', 'background-color', WHITE);
+    });
+  });
+});
 
 // describe('10 - Faça o quadro de pixels ter seu tamanho definido pelo usuário.', () => {
 //   beforeEach(() => {

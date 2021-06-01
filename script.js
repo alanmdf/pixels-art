@@ -38,10 +38,23 @@ window.onload = function() {
   for (let index = 0; index < pixelsDiv.length; index += 1) {
     pixelsDiv[index].addEventListener('click', paintPixel);
   }
-  
+
   function paintPixel(event) {
     let selectedElement = document.querySelector('.selected');
     let selectedElementColor = window.getComputedStyle(selectedElement, null).getPropertyValue('background-color');
     event.target.style.backgroundColor = selectedElementColor;
+  }
+
+  const buttonDiv = document.querySelector('.button-div');
+  let button = document.createElement('button');
+  button.setAttribute('id','clear-board')
+  button.innerText = 'Limpar';
+  buttonDiv.appendChild(button);
+  button.addEventListener('click', clearBoard); 
+
+  function clearBoard() {
+    for (let index = 0; index < pixelsDiv.length; index += 1) {
+    pixelsDiv[index].style.backgroundColor = 'white';
+    }
   }
 }
