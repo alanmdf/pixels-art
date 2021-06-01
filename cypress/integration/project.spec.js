@@ -176,45 +176,45 @@ describe('4 - Adicione à página um quadro de pixels, com 25 pixels.', () => {
   });
 });
 
-// describe('5 - Faça com que cada elemento do quadro de pixels possua 40 pixels de largura, 40 pixels de altura e seja delimitado por uma borda preta de 1 pixel.', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('5 - Faça com que cada elemento do quadro de pixels possua 40 pixels de largura, 40 pixels de altura e seja delimitado por uma borda preta de 1 pixel.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se o quadro de pixels tem altura e comprimento de 5 elementos', () => {
-//     cy.get('.pixel')
-//       .should('have.length', 25)
-//       .each((pixel) => {
-//         expect(pixel).to.have.css('background-color', WHITE);
-//       })
-//       .and((pixels) => {
-//         const rows = chunk(pixels, 5);
-//         rows.forEach((row) => {
-//           for (let index = 1; index < row.length; index += 1) {
-//             const current = pixels[index];
-//             const previous = pixels[index - 1];
-//             cy.wrap(current)
-//               .should('be.onTheRightOf', previous)
-//               .and('be.horizontallyAlignedWith', previous);
-//           }
-//         });
+  it('Verifica se o quadro de pixels tem altura e comprimento de 5 elementos', () => {
+    cy.get('.pixel')
+      .should('have.length', 25)
+      .each((pixel) => {
+        expect(pixel).to.have.css('background-color', WHITE);
+      })
+      .and((pixels) => {
+        const rows = chunk(pixels, 5);
+        rows.forEach((row) => {
+          for (let index = 1; index < row.length; index += 1) {
+            const current = pixels[index];
+            const previous = pixels[index - 1];
+            cy.wrap(current)
+              .should('be.onTheRightOf', previous)
+              .and('be.horizontallyAlignedWith', previous);
+          }
+        });
 
-//         for (let index = 1; index < 5; index += 1) {
-//           expect(pixels[index * 5]).to.be.belowOf(pixels[(index - 1) * 5]);
-//         }
-//       });
-//   });
+        for (let index = 1; index < 5; index += 1) {
+          expect(pixels[index * 5]).to.be.belowOf(pixels[(index - 1) * 5]);
+        }
+      });
+  });
 
-//   it('Verifica se 40 pixels é o tamanho total do elemento, incluindo seu conteúdo e excluindo a borda preta, que deve ser criada à parte.', () => {
-//     cy.get('.pixel')
-//       .each((pixel) => {
-//         cy.wrap(pixel)
-//           .should('have.css', 'height', '40px')
-//           .and('have.css', 'width', '40px')
-//           .and('have.css', 'border', `1px solid ${BLACK}`);
-//       });
-//   });
-// });
+  it('Verifica se 40 pixels é o tamanho total do elemento, incluindo seu conteúdo e excluindo a borda preta, que deve ser criada à parte.', () => {
+    cy.get('.pixel')
+      .each((pixel) => {
+        cy.wrap(pixel)
+          .should('have.css', 'height', '40px')
+          .and('have.css', 'width', '40px')
+          .and('have.css', 'border', `1px solid ${BLACK}`);
+      });
+  });
+});
 
 // describe('6 - Defina a cor preta como cor inicial. Ao carregar a página a cor preta já deve estar selecionada para pintar os pixels', () => {
 //   beforeEach(() => {
