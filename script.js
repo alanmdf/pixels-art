@@ -15,6 +15,7 @@ window.onload = function() {
       }
     }
   }
+
   insertTableRows();
 
   const colorPaletteDiv = document.getElementsByClassName('color');
@@ -24,13 +25,23 @@ window.onload = function() {
   }
 
   function selectColor(event) {
-    console.log(event.target);
     for (let index = 0; index < colorPaletteDiv.length; index += 1) {
       if (colorPaletteDiv[index].classList.contains('selected')) {
         colorPaletteDiv[index].classList.remove('selected');
       }
       event.target.classList.add('selected');
     }
-    console.log(colorPaletteDiv);
+  }
+
+  const pixelsDiv = document.getElementsByClassName('pixel');
+
+  for (let index = 0; index < pixelsDiv.length; index += 1) {
+    pixelsDiv[index].addEventListener('click', paintPixel);
+  }
+  
+  function paintPixel(event) {
+    let selectedElement = document.querySelector('.selected');
+    let selectedElementColor = window.getComputedStyle(selectedElement, null).getPropertyValue('background-color');
+    event.target.style.backgroundColor = selectedElementColor;
   }
 }

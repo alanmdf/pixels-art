@@ -264,68 +264,68 @@ describe('7 - Clicar em uma das cores da paleta, faz com que ela seja selecionad
   });
 });
 
-// describe('8 - Clicar em um pixel dentro do quadro após selecionar uma cor na paleta, faz com que o pixel seja preenchido com a cor selecionada.', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('8 - Clicar em um pixel dentro do quadro após selecionar uma cor na paleta, faz com que o pixel seja preenchido com a cor selecionada.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se ao carregar a página deve ser possível pintar os pixels de preto', () => {
-//     cy.get('.pixel').each((pixel) => {
-//       cy.wrap(pixel)
-//         .click()
-//         .should('have.css', 'background-color', BLACK);
-//     });
-//   });
+  it('Verifica se ao carregar a página deve ser possível pintar os pixels de preto', () => {
+    cy.get('.pixel').each((pixel) => {
+      cy.wrap(pixel)
+        .click()
+        .should('have.css', 'background-color', BLACK);
+    });
+  });
 
-//   it('Verifica se após selecionar uma outra cor na paleta, é possível pintar os pixels com essa cor', () => {
-//     cy.get('.color').each((color) => {
-//       const backgroundColor = color.css('background-color');
-//       cy.wrap(color).click();
-//       cy.get('.pixel').each((pixel) => {
-//         cy.wrap(pixel)
-//           .click()
-//           .should('have.css', 'background-color', backgroundColor);
-//       });
-//     });
-//   });
+  it('Verifica se após selecionar uma outra cor na paleta, é possível pintar os pixels com essa cor', () => {
+    cy.get('.color').each((color) => {
+      const backgroundColor = color.css('background-color');
+      cy.wrap(color).click();
+      cy.get('.pixel').each((pixel) => {
+        cy.wrap(pixel)
+          .click()
+          .should('have.css', 'background-color', backgroundColor);
+      });
+    });
+  });
 
-//   it('Verifica se somente o pixel que foi clicado foi preenchido com a cor selecionada, sem influenciar na cor dos demais pixels.', () => {
-//     const colorToPixelIndexMap = { 0: 6, 1: 8, 2: 16, 3: 18 };
-//     cy.get('.color').each((color, index) => {
-//       cy.wrap(color).click();
-//       const backgroundColor = color.css('background-color');
-//       const clickedPixelIndex = colorToPixelIndexMap[index];
-//       cy.get('.pixel').eq(clickedPixelIndex).click();
+  it('Verifica se somente o pixel que foi clicado foi preenchido com a cor selecionada, sem influenciar na cor dos demais pixels.', () => {
+    const colorToPixelIndexMap = { 0: 6, 1: 8, 2: 16, 3: 18 };
+    cy.get('.color').each((color, index) => {
+      cy.wrap(color).click();
+      const backgroundColor = color.css('background-color');
+      const clickedPixelIndex = colorToPixelIndexMap[index];
+      cy.get('.pixel').eq(clickedPixelIndex).click();
 
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex - 1)
-//         .should('not.have.css', 'background-color', backgroundColor);
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex + 1)
-//         .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex - 1)
+        .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex + 1)
+        .should('not.have.css', 'background-color', backgroundColor);
 
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex - 5)
-//         .should('not.have.css', 'background-color', backgroundColor);
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex + 5)
-//         .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex - 5)
+        .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex + 5)
+        .should('not.have.css', 'background-color', backgroundColor);
 
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex - 6)
-//         .should('not.have.css', 'background-color', backgroundColor);
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex - 4)
-//         .should('not.have.css', 'background-color', backgroundColor);
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex + 4)
-//         .should('not.have.css', 'background-color', backgroundColor);
-//       cy.get('.pixel')
-//         .eq(clickedPixelIndex + 6)
-//         .should('not.have.css', 'background-color', backgroundColor);
-//     });
-//   });
-// });
+      cy.get('.pixel')
+        .eq(clickedPixelIndex - 6)
+        .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex - 4)
+        .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex + 4)
+        .should('not.have.css', 'background-color', backgroundColor);
+      cy.get('.pixel')
+        .eq(clickedPixelIndex + 6)
+        .should('not.have.css', 'background-color', backgroundColor);
+    });
+  });
+});
 
 // describe('9 - Crie um botão que, ao ser clicado, limpa o quadro preenchendo a cor de todos seus pixels com branco.', () => {
 //   beforeEach(() => {
