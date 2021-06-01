@@ -16,4 +16,21 @@ window.onload = function() {
     }
   }
   insertTableRows();
+
+  const colorPaletteDiv = document.getElementsByClassName('color');
+
+  for (let index = 0; index < colorPaletteDiv.length; index += 1) {
+    colorPaletteDiv[index].addEventListener('click', selectColor);
+  }
+
+  function selectColor(event) {
+    console.log(event.target);
+    for (let index = 0; index < colorPaletteDiv.length; index += 1) {
+      if (colorPaletteDiv[index].classList.contains('selected')) {
+        colorPaletteDiv[index].classList.remove('selected');
+      }
+      event.target.classList.add('selected');
+    }
+    console.log(colorPaletteDiv);
+  }
 }

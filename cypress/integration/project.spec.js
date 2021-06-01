@@ -233,36 +233,36 @@ describe('6 - Defina a cor preta como cor inicial. Ao carregar a página a cor p
   });
 });
 
-// describe('7 - Clicar em uma das cores da paleta, faz com que ela seja selecionada e utilizada para preencher os pixels no quadro.', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('7 - Clicar em uma das cores da paleta, faz com que ela seja selecionada e utilizada para preencher os pixels no quadro.', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se somente uma cor da paleta de cores tem a classe `selected` de cada vez', () => {
-//     cy.get('.color').each((selectedColor, selectedColorIndex) => {
-//       cy.wrap(selectedColor).click();
-//       cy.get('.color').each((color, colorIndex) => {
-//         if (colorIndex === selectedColorIndex) {
-//           expect(color).to.have.class('selected');
-//         } else {
-//           expect(color).not.to.have.class('selected');
-//         }
-//       });
-//     });
-//   });
+  it('Verifica se somente uma cor da paleta de cores tem a classe `selected` de cada vez', () => {
+    cy.get('.color').each((selectedColor, selectedColorIndex) => {
+      cy.wrap(selectedColor).click();
+      cy.get('.color').each((color, colorIndex) => {
+        if (colorIndex === selectedColorIndex) {
+          expect(color).to.have.class('selected');
+        } else {
+          expect(color).not.to.have.class('selected');
+        }
+      });
+    });
+  });
 
-//   it('Verifica se os pixels dentro do quadro não têm a classe `selected` quando são clicados', () => {
-//     cy.get('.color').each((color) => {
-//       const backgroundColor = color.css('background-color');
-//       cy.wrap(color).click();
-//       cy.get('.pixel').each((pixel) => {
-//         cy.wrap(pixel)
-//           .click()
-//           .should('not.have.class', 'selected');
-//       });
-//     });
-//   });
-// });
+  it('Verifica se os pixels dentro do quadro não têm a classe `selected` quando são clicados', () => {
+    cy.get('.color').each((color) => {
+      const backgroundColor = color.css('background-color');
+      cy.wrap(color).click();
+      cy.get('.pixel').each((pixel) => {
+        cy.wrap(pixel)
+          .click()
+          .should('not.have.class', 'selected');
+      });
+    });
+  });
+});
 
 // describe('8 - Clicar em um pixel dentro do quadro após selecionar uma cor na paleta, faz com que o pixel seja preenchido com a cor selecionada.', () => {
 //   beforeEach(() => {
