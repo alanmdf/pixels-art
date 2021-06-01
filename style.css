@@ -6,19 +6,19 @@
   margin: 5px; 
 }
 
-.color0 {
+.black-pixel {
   background-color: black;
 }
 
-.color1 {
+.green-pixel {
   background-color: green;
 }
 
-.color2 {
+.blue-pixel {
   background-color: blue;
 }
 
-.color3 {
+.yellow-pixel {
   background-color: yellow;
 }
 

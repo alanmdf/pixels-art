@@ -216,22 +216,22 @@ describe('5 - Faça com que cada elemento do quadro de pixels possua 40 pixels d
   });
 });
 
-// describe('6 - Defina a cor preta como cor inicial. Ao carregar a página a cor preta já deve estar selecionada para pintar os pixels', () => {
-//   beforeEach(() => {
-//     cy.visit('./index.html');
-//   });
+describe('6 - Defina a cor preta como cor inicial. Ao carregar a página a cor preta já deve estar selecionada para pintar os pixels', () => {
+  beforeEach(() => {
+    cy.visit('./index.html');
+  });
 
-//   it('Verifica se o elemento da cor preta possui, inicialmente, a `classe` `selected`', () => {
-//     cy.get('.selected').first().should('have.css', 'background-color', BLACK);
-//   });
+  it('Verifica se o elemento da cor preta possui, inicialmente, a `classe` `selected`', () => {
+    cy.get('.selected').first().should('have.css', 'background-color', BLACK);
+  });
 
-//   it('Verifica se nenhuma outra cor da paleta tem a `classe` `selected`', () => {
-//     cy.get('.color:not(:first-child)')
-//       .each((color) => {
-//         cy.wrap(color).should('not.have.class', 'selected');
-//       });
-//   });
-// });
+  it('Verifica se nenhuma outra cor da paleta tem a `classe` `selected`', () => {
+    cy.get('.color:not(:first-child)')
+      .each((color) => {
+        cy.wrap(color).should('not.have.class', 'selected');
+      });
+  });
+});
 
 // describe('7 - Clicar em uma das cores da paleta, faz com que ela seja selecionada e utilizada para preencher os pixels no quadro.', () => {
 //   beforeEach(() => {
