@@ -368,144 +368,144 @@ describe('9 - Crie um botão que, ao ser clicado, limpa o quadro preenchendo a c
   });
 });
 
-describe('10 - Faça o quadro de pixels ter seu tamanho definido pelo usuário.', () => {
-  beforeEach(() => {
-    cy.visit('./index.html');
-  });
+// describe('10 - Faça o quadro de pixels ter seu tamanho definido pelo usuário.', () => {
+//   beforeEach(() => {
+//     cy.visit('./index.html');
+//   });
 
-  it('Verifica se existe um input com o id `board-size`', () => {
-    cy.get('#board-size').should('be.visible');
-  });
+//   it('Verifica se existe um input com o id `board-size`', () => {
+//     cy.get('#board-size').should('be.visible');
+//   });
 
-  it('Verifica se existe um botão com o id `generate-board`', () => {
-    cy.get('#generate-board').should('be.visible');
-  });
+//   it('Verifica se existe um botão com o id `generate-board`', () => {
+//     cy.get('#generate-board').should('be.visible');
+//   });
 
-  it('Verifica se o input só aceita número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento `input`', () => {
-    cy.get('#board-size[type=\'number\'][min=\'1\']');
-  });
+//   it('Verifica se o input só aceita número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento `input`', () => {
+//     cy.get('#board-size[type=\'number\'][min=\'1\']');
+//   });
 
-  it('Verifica se o botão contém o texto \'VQV\'', () => {
-    cy.get('#generate-board').contains(/vqv/i);
-  });
+//   it('Verifica se o botão contém o texto \'VQV\'', () => {
+//     cy.get('#generate-board').contains(/vqv/i);
+//   });
 
-  it('Verifica se o input está posicionado entre a paleta de cores e o quadro de pixels', () => {
-    cy.get('#color-palette').then((palette) => {
-      cy.get('#board-size').should('be.belowOf', palette);
-    });
+//   it('Verifica se o input está posicionado entre a paleta de cores e o quadro de pixels', () => {
+//     cy.get('#color-palette').then((palette) => {
+//       cy.get('#board-size').should('be.belowOf', palette);
+//     });
 
-    cy.get('#board-size').then((palette) => {
-      cy.get('#pixel-board').should('be.belowOf', palette);
-    });
-  });
+//     cy.get('#board-size').then((palette) => {
+//       cy.get('#pixel-board').should('be.belowOf', palette);
+//     });
+//   });
 
-  it('Verifica se o botão está posicionado ao lado do input', () => {
-    cy.get('#board-size').then((board) => {
-      cy.get('#generate-board').should('be.onTheRightOf', board);
-    });
-  });
+//   it('Verifica se o botão está posicionado ao lado do input', () => {
+//     cy.get('#board-size').then((board) => {
+//       cy.get('#generate-board').should('be.onTheRightOf', board);
+//     });
+//   });
 
-  it('Verifica se nenhum valor for colocado no input ao clicar no botão, um `alert` é exibido com o texto: \'Board inválido!\'', () => {
-    let alerted = false;
-    cy.on('window:alert', (msg) => alerted = msg);
+//   it('Verifica se nenhum valor for colocado no input ao clicar no botão, um `alert` é exibido com o texto: \'Board inválido!\'', () => {
+//     let alerted = false;
+//     cy.on('window:alert', (msg) => alerted = msg);
 
-    cy.get('#generate-board')
-      .click()
-      .then(() => expect(alerted).to.match(/Board inválido!/i));
-  });
+//     cy.get('#generate-board')
+//       .click()
+//       .then(() => expect(alerted).to.match(/Board inválido!/i));
+//   });
 
-  it('Verifica se ao clicar no botão com um valor preenchido, o tamanho do board muda.', () => {
-    cy.get('#board-size').clear().type(10);
-    cy.get('#generate-board').click();
-    cy.get('.pixel').should('have.length', 100);
-  });
+//   it('Verifica se ao clicar no botão com um valor preenchido, o tamanho do board muda.', () => {
+//     cy.get('#board-size').clear().type(10);
+//     cy.get('#generate-board').click();
+//     cy.get('.pixel').should('have.length', 100);
+//   });
 
-  it('Verifica se o novo quadro tem todos os pixels preenchidos com a cor branca', () => {
-    cy.get('#board-size').clear().type(6);
-    cy.get('#generate-board').click();
-    cy.get('.pixel')
-      .should('have.length', 36)
-      .each((pixel) => {
-        expect(pixel).to.have.css('background-color', WHITE);
-      });
-  });
-});
+//   it('Verifica se o novo quadro tem todos os pixels preenchidos com a cor branca', () => {
+//     cy.get('#board-size').clear().type(6);
+//     cy.get('#generate-board').click();
+//     cy.get('.pixel')
+//       .should('have.length', 36)
+//       .each((pixel) => {
+//         expect(pixel).to.have.css('background-color', WHITE);
+//       });
+//   });
+// });
 
-describe('11 - Limite o tamanho mínimo e máximo do board.', () => {
-  beforeEach(() => {
-    cy.visit('./index.html');
-  });
+// describe('11 - Limite o tamanho mínimo e máximo do board.', () => {
+//   beforeEach(() => {
+//     cy.visit('./index.html');
+//   });
 
-  it('Verifica se a altura máxima do board é 50', () => {
-    cy.get('#board-size').clear().type(50);
-    cy.get('#generate-board').click();
-    cy.get('.pixel').should('have.length', 2500);
-  });
+//   it('Verifica se a altura máxima do board é 50', () => {
+//     cy.get('#board-size').clear().type(50);
+//     cy.get('#generate-board').click();
+//     cy.get('.pixel').should('have.length', 2500);
+//   });
 
-  it('Verifica se a altura do board é 5 quando um valor menor é colocado no input', () => {
-    cy.get('#board-size').clear().type(4);
-    cy.get('#generate-board').click();
-    cy.get('.pixel').should('have.length', 25);
-  });
+//   it('Verifica se a altura do board é 5 quando um valor menor é colocado no input', () => {
+//     cy.get('#board-size').clear().type(4);
+//     cy.get('#generate-board').click();
+//     cy.get('.pixel').should('have.length', 25);
+//   });
 
-  it('Verifica se a altura do board é 50 quando um valor maior é colocado no input', () => {
-    cy.get('#board-size').clear().type(51);
-    cy.get('#generate-board').click();
-    cy.get('.pixel').should('have.length', 2500);
-  });
-});
+//   it('Verifica se a altura do board é 50 quando um valor maior é colocado no input', () => {
+//     cy.get('#board-size').clear().type(51);
+//     cy.get('#generate-board').click();
+//     cy.get('.pixel').should('have.length', 2500);
+//   });
+// });
 
-describe('12 - Faça com que as cores da paleta sejam geradas aleatoriamente ao carregar a página.', () => {
-  beforeEach(() => {
-    cy.visit('./index.html');
-  });
+// describe('12 - Faça com que as cores da paleta sejam geradas aleatoriamente ao carregar a página.', () => {
+//   beforeEach(() => {
+//     cy.visit('./index.html');
+//   });
 
-  it('Verifica se as cores geradas na paleta são diferentes a cada carregamento da página', () => {
-    cy.get('.color').then((colors) => {
-      let currentColors; let
-        previousColors;
+//   it('Verifica se as cores geradas na paleta são diferentes a cada carregamento da página', () => {
+//     cy.get('.color').then((colors) => {
+//       let currentColors; let
+//         previousColors;
 
-      previousColors = Array.from(colors).map((color) => (
-        Cypress.$(color).css('background-color')
-      ));
+//       previousColors = Array.from(colors).map((color) => (
+//         Cypress.$(color).css('background-color')
+//       ));
 
-      for (let i = 0; i < 5; i += 1) {
-        cy.reload();
-        cy.get('.color').then((colors) => {
-          currentColors = Array.from(colors).map((color) => (
-            Cypress.$(color).css('background-color')
-          ));
+//       for (let i = 0; i < 5; i += 1) {
+//         cy.reload();
+//         cy.get('.color').then((colors) => {
+//           currentColors = Array.from(colors).map((color) => (
+//             Cypress.$(color).css('background-color')
+//           ));
 
-          expect(currentColors).not.to.deep.equal(previousColors);
-          previousColors = currentColors;
-        });
-      }
-    });
-  });
+//           expect(currentColors).not.to.deep.equal(previousColors);
+//           previousColors = currentColors;
+//         });
+//       }
+//     });
+//   });
 
-  it('Verifica se a cor preta ainda está presente e é a primeira na sua paleta de cores', () => {
-    cy.get('.color').then((colors) => {
-      let currentColors; let
-        previousColors;
+//   it('Verifica se a cor preta ainda está presente e é a primeira na sua paleta de cores', () => {
+//     cy.get('.color').then((colors) => {
+//       let currentColors; let
+//         previousColors;
 
-      previousColors = Array.from(colors).map((color) => (
-        Cypress.$(color).css('background-color')
-      ));
+//       previousColors = Array.from(colors).map((color) => (
+//         Cypress.$(color).css('background-color')
+//       ));
 
-      expect(previousColors[0]).to.eq(BLACK);
+//       expect(previousColors[0]).to.eq(BLACK);
 
-      for (let i = 0; i < 5; i += 1) {
-        cy.reload();
-        cy.get('.color').then((colors) => {
-          currentColors = Array.from(colors).map((color) => (
-            Cypress.$(color).css('background-color')
-          ));
+//       for (let i = 0; i < 5; i += 1) {
+//         cy.reload();
+//         cy.get('.color').then((colors) => {
+//           currentColors = Array.from(colors).map((color) => (
+//             Cypress.$(color).css('background-color')
+//           ));
 
-          expect(currentColors[0]).to.eq(BLACK);
-          expect(currentColors).not.to.deep.equal(previousColors);
-          previousColors = currentColors;
-        });
-      }
-    });
-  });
-});
+//           expect(currentColors[0]).to.eq(BLACK);
+//           expect(currentColors).not.to.deep.equal(previousColors);
+//           previousColors = currentColors;
+//         });
+//       }
+//     });
+//   });
+// });
